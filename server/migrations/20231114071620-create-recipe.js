@@ -12,6 +12,9 @@ module.exports = {
             name: {
                 type: Sequelize.STRING,
             },
+            summary: {
+                type: Sequelize.TEXT,
+            },
             instructions: {
                 type: Sequelize.TEXT,
             },

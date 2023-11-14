@@ -62,6 +62,7 @@ class Controller {
 
             const {
                 name,
+                summary,
                 instructions,
                 imageUrl,
                 ingredients,
@@ -78,6 +79,7 @@ class Controller {
             // create new recipe
             const newRecipe = await Recipe.create({
                 name,
+                summary,
                 instructions,
                 imageUrl,
                 ingredients,

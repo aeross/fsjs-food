@@ -14,9 +14,19 @@ async function fetchRecipes() {
         );
 
         const recipes = data.map((d) => {
+            let instructions;
+            if (d.analyzedInstructions) {
+                if (d.analyzedInstructions.length != 0) {
+                    instructions = d.analyzedInstructions[0].steps
+                        .map((step) => step.step)
+                        .join("\n");
+                }
+            }
+
             return {
                 name: d.title,
-                instructions: d.summary,
+                summary: d.summary,
+                instructions,
                 imageUrl: d.image,
                 ingredients: [...new Set(d.extendedIngredients.map((ingr) => ingr.aisle))].join(
                     ", "
