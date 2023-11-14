@@ -5,6 +5,7 @@ class ErrorHandler {
     static #sequelizeUnique = "SequelizeUniqueConstraintError";
     static #sequelizeForeignKey = "SequelizeForeignKeyConstraintError";
     static #JSONWebToken = "JsonWebTokenError";
+    static #googleAuth = "Wrong number of segments in token";
 
     // my errors
     static InvalidNullOrEmpty = "InvalidNullOrEmptyError";
@@ -40,7 +41,10 @@ class ErrorHandler {
         }
 
         // 401
-        if (err.name === ErrorHandler.#JSONWebToken) {
+        if (
+            err.name === ErrorHandler.#JSONWebToken ||
+            err.message.includes(ErrorHandler.#googleAuth)
+        ) {
             status = 401;
             msg = "invalid token";
         }
