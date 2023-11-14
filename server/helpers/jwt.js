@@ -1,8 +1,9 @@
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const ErrorHandler = require("../middlewares/errorHandler");
 const SECRET_KEY = process.env.SECRET_KEY;
 
-class JWT {
+class JWTHelper {
     static encode(payload) {
         return jwt.sign(payload, SECRET_KEY);
     }
@@ -12,4 +13,4 @@ class JWT {
     }
 }
 
-module.exports = JWT;
+module.exports = JWTHelper;

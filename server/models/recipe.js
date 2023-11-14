@@ -10,14 +10,15 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             // define association here
             this.belongsTo(models.User, { foreignKey: "userId" });
-            this.hasMany(models.FoodRecipes, { foreignKey: "recipeId" });
+            this.hasOne(models.Nutrient, { foreignKey: "recipeId" });
         }
     }
     Recipe.init(
         {
             name: DataTypes.STRING,
-            instructions: DataTypes.STRING,
+            instructions: DataTypes.TEXT,
             imageUrl: DataTypes.STRING,
+            ingredients: DataTypes.STRING,
             userId: DataTypes.INTEGER,
         },
         {
