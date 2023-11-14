@@ -9,20 +9,20 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            this.hasMany(models.FoodRecipe, { foreignKey: "foodId" });
+            this.hasMany(models.FoodRecipes, { foreignKey: "foodId" });
         }
     }
     Food.init(
         {
             name: DataTypes.STRING,
-            calories: DataTypes.INTEGER,
-            protein: DataTypes.INTEGER,
-            carbohydrate: DataTypes.INTEGER,
-            fat: DataTypes.INTEGER,
-            fiber: DataTypes.INTEGER,
-            sugar: DataTypes.INTEGER,
-            sodium: DataTypes.INTEGER,
-            cholesterol: DataTypes.INTEGER,
+            calories: DataTypes.FLOAT,
+            protein: DataTypes.FLOAT,
+            carbohydrate: DataTypes.FLOAT,
+            fat: DataTypes.FLOAT,
+            fiber: DataTypes.FLOAT,
+            sugar: DataTypes.FLOAT,
+            sodium: DataTypes.FLOAT,
+            cholesterol: DataTypes.FLOAT,
         },
         {
             sequelize,

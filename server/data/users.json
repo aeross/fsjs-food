@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Peter Parker",
+        "email": "spooderman@mail.com",
+        "password": "peter-tingle",
+        "gender": "Male",
+        "age": 18,
+        "height": 177,
+        "weight": 80
+    }
+]
