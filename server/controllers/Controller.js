@@ -57,8 +57,8 @@ class Controller {
 
     static async addRecipe(req, res, next) {
         try {
-            // const { id } = req.loginInfo;
-            const id = 1;
+            const id = req.loginInfo.userId;
+            // const id = 1;
 
             const {
                 name,
@@ -121,8 +121,8 @@ class Controller {
             if (!data) throw new Error(ErrorHandler.DataNotFound);
 
             // delete nutrient first, then recipe
-            await Nutrient.destroy({ where: { recipeId: id } });
-            await Recipe.destroy({ where: { id } });
+            // await Nutrient.destroy({ where: { recipeId: id } });
+            // await Recipe.destroy({ where: { id } });
 
             res.status(200).json(data);
         } catch (error) {

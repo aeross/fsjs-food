@@ -7,7 +7,7 @@ const recipes = require("./recipes");
 router.post("/login", Controller.googleLogin);
 // router.post("/login", Controller.login);
 
-// router.use(Auth.authenticate);
+router.use(Auth.authenticate);
 
 router.use("/recipes", recipes);
 
