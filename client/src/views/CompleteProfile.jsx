@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 export default function CompleteProfile({ url }) {
     const token = `Bearer ${localStorage.getItem("accessToken")}`;
@@ -20,11 +21,8 @@ export default function CompleteProfile({ url }) {
                     headers: { Authorization: token }
                 });
                 
-                // if data is already complete, directly navigate to home page
+                // populate data with current user values
                 const { name, gender, age, height, weight } = data;
-                if (name && gender && age && weight && height) useNavigate("/");
-
-                // otherwise, ask user to fill their data
                 setName(name);
                 setGender(gender);
                 setAge(age);
@@ -73,13 +71,15 @@ export default function CompleteProfile({ url }) {
         <form className="p-8 w-[70%] bg-slate-100 grid grid-cols-2 gap-4">
             <div className="col-span-2 flex justify-between">
                 <label htmlFor="name">Name</label>
-                <input onChange={(event) => { setName(event.target.value) }} type="text" id="name" name="name" className="border rounded mx-4 w-[100%]" />
+                <input onChange={(event) => { setName(event.target.value) }} value={name}
+                    type="text" id="name" name="name" className="border rounded mx-4 w-[100%]" />
             </div>
 
             <div className="flex justify-between">
                 <label htmlFor="gender">Gender</label>
-                <select onChange={(event) => { setGender(event.target.value) }} defaultValue={'DEFAULT'} name="gender" id="gender" className="border mx-4 w-[100%]">
-                    <option value="DEFAULT" disabled>Select gender</option>
+                <select onChange={(event) => { setGender(event.target.value) }} value={gender}
+                    name="gender" id="gender" className="border mx-4 w-[100%]">
+                    <option value="" disabled>Select gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
@@ -87,22 +87,25 @@ export default function CompleteProfile({ url }) {
 
             <div className="flex justify-between">
                 <label htmlFor="age">Age</label>
-                <input onChange={(event) => { setAge(event.target.value) }} type="number" id="age" name="age" className="border mx-4 w-[100%]" />
+                <input onChange={(event) => { setAge(event.target.value) }} value={age}
+                type="number" id="age" name="age" className="border mx-4 w-[100%]" />
             </div>
 
             <div className="flex justify-between">
                 <label htmlFor="height">Height</label>
-                <input onChange={(event) => { setHeight(event.target.value) }} type="number" step="0.1" id="height" name="height" className="border mx-4 w-[100%]" />
+                <input onChange={(event) => { setHeight(event.target.value) }} value={height}
+                type="number" step="0.1" id="height" name="height" className="border mx-4 w-[100%]" />
             </div>
 
             <div className="flex justify-between">
                 <label htmlFor="weight">Weight</label>
-                <input onChange={(event) => { setWeight(event.target.value) }} type="number" step="0.1" id="weight" name="weight" className="border mx-4 w-[100%]" />
+                <input onChange={(event) => { setWeight(event.target.value) }} value={weight}
+                type="number" step="0.1" id="weight" name="weight" className="border mx-4 w-[100%]" />
             </div>
 
             <div>
                 <button onClick={handleSubmit} type="submit" className="rounded-lg w-24 px-4 py-1 bg-slate-100 hover:bg-slate-200 active:bg-slate-300">Submit</button>
-                <button className="rounded-lg w-24 px-4 py-1 bg-slate-100 hover:bg-slate-200 active:bg-slate-300">Skip</button>
+                <Link to="/"><button className="rounded-lg w-24 px-4 py-1 bg-slate-100 hover:bg-slate-200 active:bg-slate-300">Skip</button></Link>
             </div>
         </form>
     </div>
