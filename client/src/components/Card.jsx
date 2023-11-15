@@ -34,6 +34,8 @@ export default function Card({ url, user, recipe }) {
                 </figure>
                 <div>
                     <p className="text-bold text-center my-4">{recipe.name}</p>
+                    <p className="text-center my-4">{Math.round(recipe.Nutrient.calories)} Calories</p>
+                    
                 </div>
             </Link>
             { (user.id == recipe.userId) &&

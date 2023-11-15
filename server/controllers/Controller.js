@@ -116,7 +116,9 @@ class Controller {
         }
     }
 
-    // search for a recipe.
+    static async recommendRecipe(req, res, next) {}
+
+    // search for a recipe from SPOONACULAR (API)
     static async searchRecipe(req, res, next) {
         try {
             // get search query from query params
@@ -258,13 +260,6 @@ class Controller {
             await Recipe.destroy({ where: { id } });
 
             res.status(200).json(data);
-        } catch (error) {
-            next(error);
-        }
-    }
-
-    static async uploadImage(req, res, next) {
-        try {
         } catch (error) {
             next(error);
         }
