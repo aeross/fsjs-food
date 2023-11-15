@@ -3,6 +3,7 @@ const ErrorHandler = require("../middlewares/errorHandler");
 const { User, Recipe, Nutrient } = require("../models/index");
 const { OAuth2Client } = require("google-auth-library");
 const axios = require("axios");
+const getBMI = require("../helpers/dataAnalysis");
 
 class Controller {
     static async googleLogin(req, res, next) {
@@ -116,7 +117,15 @@ class Controller {
         }
     }
 
-    static async recommendRecipe(req, res, next) {}
+    static async recommendRecipe(req, res, next) {
+        try {
+            const users = await User.findAll();
+            const usersBMI = await getBMI(users);
+            // console.log(usersBMI);
+        } catch (error) {
+            next(error);
+        }
+    }
 
     // search for a recipe from SPOONACULAR (API)
     static async searchRecipe(req, res, next) {

@@ -13,7 +13,7 @@ class Auth {
             // decode and verify access token
             const decoded = JWTHelper.decode(accessToken);
             const user = await User.findOne({ where: { id: decoded.id } });
-            if (!user) throw new Error(ErrorHandler.DataNotFound);
+            if (!user) throw new Error(ErrorHandler.Authentication);
 
             // save user data
             req.loginInfo = {
