@@ -2,6 +2,7 @@ const JWTHelper = require("../helpers/jwt");
 const ErrorHandler = require("../middlewares/errorHandler");
 const { User, Recipe, Nutrient } = require("../models/index");
 const { OAuth2Client } = require("google-auth-library");
+const axios = require("axios");
 
 class Controller {
     static async googleLogin(req, res, next) {
@@ -100,10 +101,69 @@ class Controller {
         }
     }
 
+    // helper method to search for a recipe.
+    static async searchRecipe(req, res, next) {
+        try {
+            // get search query from query params
+            const searchQuery = req.query.search;
+
+            // get API recipe data from search query
+            let { data } = await axios.get(
+                `https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&number=1&addRecipeNutrition=true&instructionsRequired=true&apiKey=${process.env.SPOONACULAR_KEY}`
+            );
+            if (data.results.length === 0) throw new Error(ErrorHandler.DataNotFound);
+
+            // convert API recipe data to our recipe data
+            data = data.results;
+            const recipe = data.map((d) => {
+                let instructions, ingredients, nutrientsArr;
+                if (d.analyzedInstructions) {
+                    if (d.analyzedInstructions.length != 0) {
+                        instructions = d.analyzedInstructions[0].steps
+                            .map((step) => step.step)
+                            .join("\n");
+                    }
+                }
+                if (d.extendedIngredients) {
+                    ingredients = [
+                        ...new Set(d.extendedIngredients.map((ingr) => ingr.aisle)),
+                    ].join(", ");
+                } else if (d.nutrition) {
+                    if (d.nutrition.ingredients) {
+                        ingredients = [
+                            ...new Set(d.nutrition.ingredients.map((ingr) => ingr.name)),
+                        ].join(", ");
+                    }
+                }
+                if (d.nutrition) nutrientsArr = d.nutrition.nutrients;
+
+                return {
+                    name: d.title,
+                    summary: d.summary,
+                    instructions,
+                    imageUrl: d.image,
+                    ingredients,
+                    calories: nutrientsArr.find((n) => n.name == "Calories").amount,
+                    fat: nutrientsArr.find((n) => n.name == "Fat").amount,
+                    carbs: nutrientsArr.find((n) => n.name == "Carbohydrates").amount,
+                    sugar: nutrientsArr.find((n) => n.name == "Sugar").amount,
+                    cholesterol: nutrientsArr.find((n) => n.name == "Cholesterol").amount,
+                    sodium: nutrientsArr.find((n) => n.name == "Sodium").amount,
+                    protein: nutrientsArr.find((n) => n.name == "Protein").amount,
+                    fiber: nutrientsArr.find((n) => n.name == "Fiber").amount,
+                };
+            });
+
+            res.status(200).json(recipe[0]);
+        } catch (error) {
+            next(error);
+        }
+    }
+
     static async addRecipe(req, res, next) {
         try {
-            // const { id } = req.loginInfo;
-            const id = 1;
+            const { id } = req.loginInfo;
+            // const id = 1;
 
             const {
                 name,
