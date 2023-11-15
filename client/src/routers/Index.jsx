@@ -3,6 +3,7 @@ import Parent from "../views/Parent";
 import Home from "../views/Home";
 import RecipesAdd from "../views/RecipesAdd";
 import Login from "../views/Login";
+import CompleteProfile from "../views/CompleteProfile";
 const BASE_URL = "http://localhost:3000"
 
 const router = createBrowserRouter([
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
     {
         path: "/login",
         element: <Login url={BASE_URL} />
+    },
+    {
+        path: "/complete-profile",
+        element: <CompleteProfile url={BASE_URL} />
     },
     { 
         path: "/recipes", 

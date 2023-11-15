@@ -1,17 +1,53 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import Card from "../components/Card";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Home({ url }) {
+    const token = `Bearer ${localStorage.getItem("accessToken")}`;
+    const navigate = useNavigate();
+
+    const [user, setUser] = useState({});
+    useEffect(() => {
+        (async () => {
+            try {
+                const { data } = await axios.get(`${url}/user-info`, {
+                    headers: { Authorization: token }
+                });
+                setUser(data)
+            } catch (error) {
+                console.log(error);
+                if (error.response.status == 401) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: error.response.data.message
+                    });
+                    navigate("/login");
+                }
+            }
+        })();
+    }, [])
+
     const [recipes, setRecipes] = useState([]);
     useEffect(() => {
         (async () => {
             try {
-                const { data } = await axios.get(`${url}/recipes`);
+                const { data } = await axios.get(`${url}/recipes`, {
+                    headers: { Authorization: token }
+                });
                 setRecipes(data);
             } catch (error) {
                 console.log(error);
+                if (error.response.status == 401) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: error.response.data.message
+                    });
+                    navigate("/login");
+                }
             }
         })();
     }, [])
@@ -24,9 +60,12 @@ export default function Home({ url }) {
             }) }
         </div>
 
-        <div>
-            <p>Looking to create your own custom recipe?</p>
-            <Link to="/recipes/add"><button>Click here</button></Link>
+        <div className="m-3">
+            <p>Looking to create your own custom recipe?
+                <Link to="/recipes/add">
+                    <button className="rounded-lg w-28 mx-2 px-4 py-1 hover:bg-slate-200 active:bg-slate-300">Click here</button>
+                </Link>
+            </p>
         </div>
     </>)
 }
