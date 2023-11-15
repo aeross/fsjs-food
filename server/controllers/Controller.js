@@ -28,6 +28,51 @@ class Controller {
         }
     }
 
+    // static async isCompleteProfile(req, res, next) {
+    //     try {
+    //         const { name, gender, age, height, weight } = req.loginInfo;
+    //         if (!(name && gender && age && height && weight)) {
+    //         }
+    //     } catch (error) {
+    //         next(error);
+    //     }
+    // }
+
+    static async completeProfile(req, res, next) {
+        try {
+            const { userId } = req.loginInfo;
+            const { name, gender, age, height, weight } = req.body;
+
+            await User.update(
+                { name, gender, age, height, weight },
+                {
+                    where: { id: userId },
+                }
+            );
+
+            let updatedUser = await User.findOne({
+                attributes: { exclude: ["password"] },
+                where: { id: userId },
+            });
+            res.status(200).json(updatedUser);
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    static async getUserInfo(req, res, next) {
+        try {
+            const { userId } = req.loginInfo;
+            let user = await User.findOne({
+                attributes: { exclude: ["password"] },
+                where: { id: userId },
+            });
+            res.status(200).json(user);
+        } catch (error) {
+            next(error);
+        }
+    }
+
     static async getRecipes(req, res, next) {
         try {
             const data = await Recipe.findAll({
@@ -57,8 +102,8 @@ class Controller {
 
     static async addRecipe(req, res, next) {
         try {
-            const id = req.loginInfo.userId;
-            // const id = 1;
+            // const { id } = req.loginInfo;
+            const id = 1;
 
             const {
                 name,
@@ -121,8 +166,8 @@ class Controller {
             if (!data) throw new Error(ErrorHandler.DataNotFound);
 
             // delete nutrient first, then recipe
-            // await Nutrient.destroy({ where: { recipeId: id } });
-            // await Recipe.destroy({ where: { id } });
+            await Nutrient.destroy({ where: { recipeId: id } });
+            await Recipe.destroy({ where: { id } });
 
             res.status(200).json(data);
         } catch (error) {

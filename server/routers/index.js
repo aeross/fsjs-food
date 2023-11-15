@@ -8,6 +8,8 @@ router.post("/login", Controller.googleLogin);
 // router.post("/login", Controller.login);
 
 router.use(Auth.authenticate);
+router.get("/user-info", Controller.getUserInfo);
+router.put("/complete-profile", Controller.completeProfile);
 
 router.use("/recipes", recipes);
 
