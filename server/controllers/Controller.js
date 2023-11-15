@@ -89,19 +89,34 @@ class Controller {
     static async getRecipesById(req, res, next) {
         try {
             const { id } = req.params;
-            const data = await Recipe.findOne({
+            let data = await Recipe.findOne({
                 include: Nutrient,
                 where: { id },
             });
 
             if (!data) throw new Error(ErrorHandler.DataNotFound);
+            data = {
+                name: data.name,
+                summary: data.summary,
+                instructions: data.instructions,
+                imageUrl: data.imageUrl,
+                ingredients: data.ingredients,
+                calories: data.Nutrient.calories,
+                carbs: data.Nutrient.carbs,
+                protein: data.Nutrient.protein,
+                fat: data.Nutrient.fat,
+                sugar: data.Nutrient.sugar,
+                fiber: data.Nutrient.fiber,
+                sodium: data.Nutrient.sodium,
+                cholesterol: data.Nutrient.cholesterol,
+            };
             res.status(200).json(data);
         } catch (error) {
             next(error);
         }
     }
 
-    // helper method to search for a recipe.
+    // search for a recipe.
     static async searchRecipe(req, res, next) {
         try {
             // get search query from query params
@@ -162,9 +177,7 @@ class Controller {
 
     static async addRecipe(req, res, next) {
         try {
-            const { id } = req.loginInfo;
-            // const id = 1;
-
+            const { userId } = req.loginInfo;
             const {
                 name,
                 summary,
@@ -188,7 +201,7 @@ class Controller {
                 instructions,
                 imageUrl,
                 ingredients,
-                userId: id,
+                userId,
             });
 
             // create new nutrients for that recipe
@@ -204,10 +217,25 @@ class Controller {
                 recipeId: newRecipe.id,
             });
 
-            const returnVal = await Recipe.findOne({
+            let returnVal = await Recipe.findOne({
                 include: Nutrient,
                 where: { id: newRecipe.id },
             });
+            returnVal = {
+                name: returnVal.name,
+                summary: returnVal.summary,
+                instructions: returnVal.instructions,
+                imageUrl: returnVal.imageUrl,
+                ingredients: returnVal.ingredients,
+                calories: returnVal.Nutrient.calories,
+                carbs: returnVal.Nutrient.carbs,
+                protein: returnVal.Nutrient.protein,
+                fat: returnVal.Nutrient.fat,
+                sugar: returnVal.Nutrient.sugar,
+                fiber: returnVal.Nutrient.fiber,
+                sodium: returnVal.Nutrient.sodium,
+                cholesterol: returnVal.Nutrient.cholesterol,
+            };
 
             res.status(201).json(returnVal);
         } catch (error) {

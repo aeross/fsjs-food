@@ -101,8 +101,8 @@ export default function CompleteProfile({ url }) {
             </div>
 
             <div>
-                <button onClick={handleSubmit} type="submit" className="rounded-lg w-24 px-4 py-1 hover:bg-slate-200 active:bg-slate-300">Submit</button>
-                <button className="rounded-lg w-24 px-4 py-1 hover:bg-slate-200 active:bg-slate-300">Skip</button>
+                <button onClick={handleSubmit} type="submit" className="rounded-lg w-24 px-4 py-1 bg-slate-100 hover:bg-slate-200 active:bg-slate-300">Submit</button>
+                <button className="rounded-lg w-24 px-4 py-1 bg-slate-100 hover:bg-slate-200 active:bg-slate-300">Skip</button>
             </div>
         </form>
     </div>
