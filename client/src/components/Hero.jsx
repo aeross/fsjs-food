@@ -3,7 +3,7 @@ export default function Hero({ recipe }) {
 
     return (<>
     <div className="min-h-screen grid grid-cols-4">
-        <div className="relative">
+        <div className="relative -z-50">
             <ul className="sticky top-24">
                 {/* carbs,
                 protein,
