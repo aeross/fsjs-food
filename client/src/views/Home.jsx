@@ -56,6 +56,13 @@ export default function Home({ url }) {
                     });
                     navigate("/login");
                 }
+                if (error.response?.status == 400) {
+                    Swal.fire({
+                        icon: "info",
+                        title: "Profile Incomplete",
+                        text: "Complete your profile to get personalised recommendations of recipes!"
+                    })
+                }
             }
         })();
     }, [])
@@ -103,8 +110,7 @@ export default function Home({ url }) {
                     <p>Fat - {recRecipe.fat} g</p>
                     <p>Protein - {recRecipe.protein} g</p>
                 </div>
-                { console.log(recRecipe) }
-                <Link to={`/recipes/${analysisResult.idealRecipe.recipeId}`}>
+                <Link to={`/recipes/${analysisResult.idealRecipe?.recipeId}`}>
                     <button className="rounded-lg w-28 px-4 py-1 bg-slate-100 hover:bg-slate-200 active:bg-slate-300">Read More</button>
                 </Link>
             </div>

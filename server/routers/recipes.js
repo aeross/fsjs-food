@@ -8,6 +8,5 @@ router.get("/api-search", Controller.searchRecipe);
 router.get("/recommend", Controller.recommendRecipe);
 router.get("/:id", Controller.getRecipesById);
 router.delete("/:id", Auth.authorise, Controller.deleteRecipe);
-// router.patch("/:id", Controller.uploadImage);
 
 module.exports = router;

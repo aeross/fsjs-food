@@ -21,6 +21,7 @@ class Controller {
             const [user, created] = await User.findOrCreate({
                 where: { email: payload.email },
                 defaults: { email: payload.email, password: "password-google" },
+                hooks: false,
             });
 
             const accessToken = JWTHelper.encode({ id: user.id });
@@ -30,21 +31,10 @@ class Controller {
         }
     }
 
-    // static async isCompleteProfile(req, res, next) {
-    //     try {
-    //         const { name, gender, age, height, weight } = req.loginInfo;
-    //         if (!(name && gender && age && height && weight)) {
-    //         }
-    //     } catch (error) {
-    //         next(error);
-    //     }
-    // }
-
     static async completeProfile(req, res, next) {
         try {
             const { userId } = req.loginInfo;
             const { name, gender, age, height, weight } = req.body;
-
             await User.update(
                 { name, gender, age, height, weight },
                 {
@@ -58,6 +48,7 @@ class Controller {
             });
             res.status(200).json(updatedUser);
         } catch (error) {
+            console.log("fail complete profile aslkdjlksahlksahjd");
             next(error);
         }
     }

@@ -17,10 +17,46 @@ module.exports = (sequelize, DataTypes) => {
             name: DataTypes.STRING,
             email: DataTypes.STRING,
             password: DataTypes.STRING,
-            age: DataTypes.INTEGER,
+            age: {
+                type: DataTypes.INTEGER,
+                validate: {
+                    min: {
+                        args: [0],
+                        msg: "age must be between 0 and 80 years old",
+                    },
+                    max: {
+                        args: [80],
+                        msg: "age must be between 0 and 80 years old",
+                    },
+                },
+            },
             gender: DataTypes.STRING,
-            height: DataTypes.INTEGER,
-            weight: DataTypes.INTEGER,
+            height: {
+                type: DataTypes.INTEGER,
+                validate: {
+                    min: {
+                        args: [130],
+                        msg: "Height must be between 130 cm and 230 cm",
+                    },
+                    max: {
+                        args: [230],
+                        msg: "Height must be between 130 cm and 230 cm",
+                    },
+                },
+            },
+            weight: {
+                type: DataTypes.INTEGER,
+                validate: {
+                    min: {
+                        args: 40,
+                        msg: "weight must be between 40 kg and 160 kg",
+                    },
+                    max: {
+                        args: 160,
+                        msg: "weight must be between 40 kg and 160 kg",
+                    },
+                },
+            },
         },
         {
             sequelize,

@@ -3,6 +3,7 @@ const app = require("../app");
 const { sequelize } = require("../models");
 const JWTHelper = require("../helpers/jwt");
 const BcryptHelper = require("../helpers/bcrypt");
+const { getBMI, calcIdealRecipeFromBMI } = require("../helpers/dataAnalysis");
 
 beforeAll(async () => {
     // up seeding
@@ -51,8 +52,9 @@ afterAll(async () => {
     });
 });
 
-const payload = { id: 1 };
-const token = JWTHelper.encode(payload);
+const token = JWTHelper.encode({ id: 1 });
+const token2 = JWTHelper.encode({ id: 5 }); // fatty hooman
+const token3 = JWTHelper.encode({ id: 12 }); // skinny hooman
 
 describe("CRUD Testing", () => {
     it("should read all recipes correctly", async () => {
@@ -64,6 +66,13 @@ describe("CRUD Testing", () => {
 
     it("error read all recipes not logged in", async () => {
         const response = await request(app).get("/recipes");
+
+        expect(response.status).toBe(401);
+        expect(response.body).toBeInstanceOf(Object);
+    });
+
+    it("error read all recipes not logged in", async () => {
+        const response = await request(app).get("/recipes").set("authorization", `Bearer re2wfewd`);
 
         expect(response.status).toBe(401);
         expect(response.body).toBeInstanceOf(Object);
@@ -139,5 +148,69 @@ describe("CRUD Testing", () => {
 
         expect(response.status).toBe(200);
         expect(response.body).toBeInstanceOf(Object);
+    });
+
+    it("recommend recipe - success", async () => {
+        const response = await request(app)
+            .get("/recipes/recommend")
+            .set("authorization", `Bearer ${token}`);
+
+        expect(response.status).toBe(200);
+        expect(response.body).toBeInstanceOf(Object);
+    });
+
+    // it("search query", async () => {
+    //     const response = await request(app)
+    //         .get("/recipes/api-search?search=egg")
+    //         .set("authorization", `Bearer ${token}`);
+    //     expect(response.status).toBe(200);
+    //     expect(response.body).toBeInstanceOf(Object);
+    // });
+});
+
+describe("helpers testing", () => {
+    it("data analysis", async () => {
+        const result = await getBMI({ id: 1, height: 150, weight: 50, age: 20 });
+        expect(result).toBeInstanceOf(Object);
+    });
+
+    it("bmi", () => {
+        const result = calcIdealRecipeFromBMI({ id: 1, height: 150, weight: 50, age: 20 }, [
+            {
+                calories: 543.36,
+                fat: 16.2,
+                carbs: 83.7,
+                sugar: 5.32,
+                cholesterol: 20.47,
+                sodium: 413.23,
+                protein: 16.84,
+                fiber: 6.73,
+                recipeId: 1,
+            },
+            {
+                calories: 591.44,
+                fat: 13.42,
+                carbs: 69.02,
+                sugar: 2.54,
+                cholesterol: 97.97,
+                sodium: 231.04,
+                protein: 44.9,
+                fiber: 2.94,
+                recipeId: 2,
+            },
+            {
+                calories: 190.68,
+                fat: 5.25,
+                carbs: 16.89,
+                sugar: 3.01,
+                cholesterol: 31.18,
+                sodium: 477.75,
+                protein: 18.46,
+                fiber: 5.85,
+                recipeId: 3,
+            },
+        ]);
+
+        expect(result).toBeInstanceOf(Object);
     });
 });

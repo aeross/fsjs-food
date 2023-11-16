@@ -30,7 +30,7 @@ export default function CompleteProfile({ url }) {
                 setWeight(weight ? weight : undefined);
             } catch (error) {
                 console.log(error);
-                if (error.response.status == 401) {
+                if (error.response?.status == 401) {
                     Swal.fire({
                         icon: "error",
                         title: "Error",
@@ -52,13 +52,20 @@ export default function CompleteProfile({ url }) {
             navigate("/");
         } catch (error) {
             console.log(error);
-            if (error.response.status == 401) {
+            if (error.response?.status == 401) {
                 Swal.fire({
                     icon: "error",
                     title: "Error",
                     text: error.response.data.message
                 });
                 navigate("/login");
+            }
+            if (error.response?.status == 400) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Bad Request",
+                    text: error.response.data.message
+                })
             }
         }
     }
@@ -67,7 +74,7 @@ export default function CompleteProfile({ url }) {
     return (<>
     <div className="flex flex-col gap-3 justify-center items-center w-full">
         <h1 className="text-bold mt-4">Complete Your Profile</h1>
-        <h2>Fill your data below to get a personalised recommendation of recipes!</h2>
+        <h2>Fill your data below to get personalised recommendations of recipes!</h2>
         <form className="p-8 w-[70%] bg-slate-100 grid grid-cols-2 gap-4">
             <div className="col-span-2 flex justify-between">
                 <label htmlFor="name">Name</label>
