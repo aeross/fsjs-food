@@ -34,7 +34,7 @@ export default function Login({ url }) {
                 headers: { token: codeResponse.credential }
             });
             localStorage.setItem("accessToken", data);
-            navigate("/");
+            navigate("/recipes");
         } catch (error) {
             console.log(error);
         }
