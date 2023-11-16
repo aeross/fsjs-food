@@ -79,13 +79,13 @@ export default function CompleteProfile({ url }) {
             <div className="col-span-2 flex justify-between">
                 <label htmlFor="name">Name</label>
                 <input onChange={(event) => { setName(event.target.value) }} value={name}
-                    type="text" id="name" name="name" className="border rounded mx-4 w-[100%]" />
+                    type="text" id="name" name="name" className="border rounded mx-4 w-[100%] px-1" />
             </div>
 
             <div className="flex justify-between">
                 <label htmlFor="gender">Gender</label>
                 <select onChange={(event) => { setGender(event.target.value) }} value={gender}
-                    name="gender" id="gender" className="border mx-4 w-[100%]">
+                    name="gender" id="gender" className="border mx-4 w-[100%] px-1">
                     <option value="" disabled>Select gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -95,19 +95,19 @@ export default function CompleteProfile({ url }) {
             <div className="flex justify-between">
                 <label htmlFor="age">Age</label>
                 <input onChange={(event) => { setAge(event.target.value) }} value={age}
-                type="number" id="age" name="age" className="border mx-4 w-[100%]" />
+                type="number" id="age" name="age" className="border mx-4 w-[100%] px-1" />
             </div>
 
             <div className="flex justify-between">
-                <label htmlFor="height">Height</label>
+                <label htmlFor="height">Height (cm)</label>
                 <input onChange={(event) => { setHeight(event.target.value) }} value={height}
-                type="number" step="0.1" id="height" name="height" className="border mx-4 w-[100%]" />
+                type="number" step="0.1" id="height" name="height" className="border mx-4 w-[70%] px-1" />
             </div>
 
             <div className="flex justify-between">
-                <label htmlFor="weight">Weight</label>
+                <label htmlFor="weight">Weight (kg)</label>
                 <input onChange={(event) => { setWeight(event.target.value) }} value={weight}
-                type="number" step="0.1" id="weight" name="weight" className="border mx-4 w-[100%]" />
+                type="number" step="0.1" id="weight" name="weight" className="border mx-4 w-[70%] px-1" />
             </div>
 
             <div>

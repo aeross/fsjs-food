@@ -53,10 +53,34 @@ afterAll(async () => {
 });
 
 const token = JWTHelper.encode({ id: 1 });
-const token2 = JWTHelper.encode({ id: 5 }); // fatty hooman
-const token3 = JWTHelper.encode({ id: 12 }); // skinny hooman
+const token2 = JWTHelper.encode({ id: 2 });
 
 describe("CRUD Testing", () => {
+    it("add recipe - success", async () => {
+        const body = {
+            name: "69",
+            summary: "69",
+            instructions: "69",
+            imageUrl: "69",
+            ingredients: "69",
+            calories: 69,
+            carbs: 69,
+            protein: 69,
+            fat: 69,
+            sugar: 69,
+            fiber: 69,
+            sodium: 69,
+            cholesterol: 69,
+        };
+        const response = await request(app)
+            .post("/recipes")
+            .set("authorization", `Bearer ${token}`)
+            .send(body);
+
+        expect(response.status).toBe(201);
+        expect(response.body).toBeInstanceOf(Object);
+    });
+
     it("should read all recipes correctly", async () => {
         const response = await request(app).get("/recipes").set("authorization", `Bearer ${token}`);
 
@@ -125,12 +149,32 @@ describe("CRUD Testing", () => {
         expect(response.body).toBeInstanceOf(Object);
     });
 
+    it("complete profile invalid input 2", async () => {
+        const body = { name: "andrew", gender: "Male", age: 20, height: 9999, weight: 43 };
+        const response = await request(app)
+            .put("/complete-profile")
+            .set("authorization", `Bearer ${token}`)
+            .send(body);
+
+        expect(response.status).toBe(400);
+        expect(response.body).toBeInstanceOf(Object);
+    });
+
     it("should delete a recipe based on id", async () => {
         const response = await request(app)
             .del("/recipes/1")
             .set("authorization", `Bearer ${token}`);
 
         expect(response.status).toBe(200);
+        expect(response.body).toBeInstanceOf(Object);
+    });
+
+    it("should delete a recipe based on id - 403 error", async () => {
+        const response = await request(app)
+            .del("/recipes/2")
+            .set("authorization", `Bearer ${token2}`);
+
+        expect(response.status).toBe(403);
         expect(response.body).toBeInstanceOf(Object);
     });
 
@@ -159,6 +203,17 @@ describe("CRUD Testing", () => {
         expect(response.body).toBeInstanceOf(Object);
     });
 
+    it("recommend recipe - error empty user data", async () => {
+        const response = await request(app)
+            .get("/recipes/recommend")
+            .set("authorization", `Bearer ${token2}`);
+
+        expect(response.status).toBe(400);
+        expect(response.body).toBeInstanceOf(Object);
+    });
+
+    // WARNING: turn this test off if possible. It eats up my API quota.
+    // YOU HAVE BEEN WARNED.
     // it("search query", async () => {
     //     const response = await request(app)
     //         .get("/recipes/api-search?search=egg")

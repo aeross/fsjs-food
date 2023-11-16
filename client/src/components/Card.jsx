@@ -31,7 +31,7 @@ export default function Card({ url, user, recipe, setRecipes }) {
     }
 
     return (<>
-        <div className="border p-4 m-4">
+        <div className="border bg-slate-100 rounded-md p-4 m-4 flex flex-col justify-between">
             <Link to={`/recipes/${recipe.id}`}>
                 <figure>
                     <img src={recipe.imageUrl} alt="" />
@@ -45,7 +45,7 @@ export default function Card({ url, user, recipe, setRecipes }) {
             { (user.id == recipe.userId) &&
                 (<button 
                     onClick={deleteOnClick} 
-                    className="rounded-lg w-28 mx-2 px-4 py-1 bg-slate-100 hover:bg-slate-200 active:bg-slate-300"
+                    className="border-2 rounded-lg w-28 mx-2 px-4 py-1 bg-slate-100 hover:bg-slate-200 active:bg-slate-300"
                 >
                     Delete
                 </button>)

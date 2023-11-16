@@ -1,4 +1,5 @@
 import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
 import Hero from "../components/Hero";
 import { useEffect, useState } from "react";
 import axios from 'axios';
@@ -6,6 +7,7 @@ import Swal from "sweetalert2";
 
 export default function RecipesDetail({ url }) {
     const { id } = useParams();
+    const navigate = useNavigate();
     const token = `Bearer ${localStorage.getItem("accessToken")}`;
 
     const [recipe, setRecipe] = useState({});
@@ -18,7 +20,7 @@ export default function RecipesDetail({ url }) {
                 setRecipe(data);
             } catch (error) {
                 console.log(error);
-                if (error.response.status == 401) {
+                if (error.response?.status == 401) {
                     Swal.fire({
                         icon: "error",
                         title: "Error",
