@@ -16,7 +16,7 @@ export default function Login({ url }) {
                 await axios.get(`${url}/user-info`, {
                     headers: { Authorization: token }
                 });
-                navigate("/");
+                navigate("/recipes");
             } catch (error) {
                 if (error.response?.status == 401) {
                     // do nothing
