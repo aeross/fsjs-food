@@ -23,11 +23,11 @@ export default function CompleteProfile({ url }) {
                 
                 // populate data with current user values
                 const { name, gender, age, height, weight } = data;
-                setName(name);
-                setGender(gender);
-                setAge(age);
-                setHeight(height);
-                setWeight(weight);
+                setName(name ? name : undefined);
+                setGender(gender ? gender : undefined);
+                setAge(age ? age : undefined);
+                setHeight(height ? height : undefined);
+                setWeight(weight ? weight : undefined);
             } catch (error) {
                 console.log(error);
                 if (error.response.status == 401) {

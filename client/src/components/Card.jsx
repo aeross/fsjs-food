@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-export default function Card({ url, user, recipe }) {
+export default function Card({ url, user, recipe, setRecipes }) {
     const token = `Bearer ${localStorage.getItem("accessToken")}`;
 
     // delete recipe (only recipes belong to user can be deleted)
@@ -13,6 +13,10 @@ export default function Card({ url, user, recipe }) {
             await axios.delete(`${url}/recipes/${recipe.id}`, {
                 headers: { Authorization: token }
             });
+            const { data } = await axios.get(`${url}/recipes`, {
+                headers: { Authorization: token }
+            });
+            setRecipes(data);
         } catch (error) {
             console.log(error);
             if (error.response.status == 401) {

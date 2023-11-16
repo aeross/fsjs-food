@@ -52,13 +52,13 @@ export default function Home({ url }) {
                 }
             }
         })();
-    }, [recipes])
+    }, [])
 
     return (<>
         {/* recommended recipes + user profile go here */}
         <div className="grid grid-cols-5 gap-3">
             { recipes.map(recipe => {
-                return <Card key={recipe.id} recipe={recipe} user={user} url={url} />
+                return <Card key={recipe.id} recipe={recipe} user={user} url={url} setRecipes={setRecipes} />
             }) }
         </div>
 

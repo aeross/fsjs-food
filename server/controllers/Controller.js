@@ -3,7 +3,7 @@ const ErrorHandler = require("../middlewares/errorHandler");
 const { User, Recipe, Nutrient } = require("../models/index");
 const { OAuth2Client } = require("google-auth-library");
 const axios = require("axios");
-const getBMI = require("../helpers/dataAnalysis");
+const { getBMI, calcIdealRecipeFromBMI } = require("../helpers/dataAnalysis");
 
 class Controller {
     static async googleLogin(req, res, next) {
@@ -117,11 +117,23 @@ class Controller {
         }
     }
 
+    // data analysis for users and recipes (with help from fitness-calculator API)
     static async recommendRecipe(req, res, next) {
         try {
-            const users = await User.findAll();
-            const usersBMI = await getBMI(users);
-            // console.log(usersBMI);
+            const { userId } = req.loginInfo;
+
+            // user's BMI data
+            const user = await User.findOne({ where: { id: userId } });
+            if (!(user.age && user.gender && user.height && user.weight)) {
+                throw new Error(ErrorHandler.InvalidNullOrEmpty);
+            }
+            const userBMI = await getBMI(user);
+
+            // user's personalised recommendation of recipes
+            const nutrients = await Nutrient.findAll();
+            const idealRecipe = calcIdealRecipeFromBMI(userBMI, nutrients);
+
+            res.status(200).json({ users: userBMI, idealRecipe });
         } catch (error) {
             next(error);
         }
