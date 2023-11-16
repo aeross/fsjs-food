@@ -5,7 +5,7 @@ import RecipesAdd from "../views/RecipesAdd";
 import Login from "../views/Login";
 import CompleteProfile from "../views/CompleteProfile";
 import RecipesDetail from "../views/RecipesDetail";
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = "https://server.andrewdh.tech"
 
 const router = createBrowserRouter([
     {
