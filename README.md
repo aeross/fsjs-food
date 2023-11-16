@@ -4,7 +4,10 @@
 
 # FSJS-Food
 
-This is a full stack JavaScript project about food. 
+This is a full stack JavaScript project about food.
+Server-side deployment: https://server.andrewdh.tech/
+Client-side deployment: https://fsjs-food.vercel.app/
+
 
 # Main Feature
 
