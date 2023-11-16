@@ -10,7 +10,7 @@ const BASE_URL = "https://server.andrewdh.tech"
 const router = createBrowserRouter([
     {
         path: "/",
-        loader: () => redirect("/recipes")
+        loader: () => redirect("/login")
     },
     {
         path: "/login",
