@@ -133,7 +133,7 @@ class Controller {
             const nutrients = await Nutrient.findAll();
             const idealRecipe = calcIdealRecipeFromBMI(userBMI, nutrients);
 
-            res.status(200).json({ users: userBMI, idealRecipe });
+            res.status(200).json({ user: userBMI, idealRecipe });
         } catch (error) {
             next(error);
         }

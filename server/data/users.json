@@ -1,163 +1,11 @@
 [
     {
         "name": "anonymous",
-        "email": "anon2@mail.com",
-        "password": "anon",
-        "age": 60,
-        "height": 171,
-        "weight": 79
-    },
-    {
-        "name": "anonymous",
-        "email": "anon6@mail.com",
-        "password": "anon",
-        "age": 59,
-        "height": 170,
-        "weight": 73
-    },
-    {
-        "name": "anonymous",
-        "email": "anon17@mail.com",
-        "password": "anon",
-        "age": 57,
-        "height": 160,
-        "weight": 99
-    },
-    {
-        "name": "anonymous",
         "email": "anon18@mail.com",
         "password": "anon",
         "age": 56,
         "height": 171,
         "weight": 79
-    },
-    {
-        "name": "anonymous",
-        "email": "anon20@mail.com",
-        "password": "anon",
-        "age": 56,
-        "height": 172,
-        "weight": 85
-    },
-    {
-        "name": "anonymous",
-        "email": "anon33@mail.com",
-        "password": "anon",
-        "age": 53,
-        "height": 162,
-        "weight": 76
-    },
-    {
-        "name": "anonymous",
-        "email": "anon36@mail.com",
-        "password": "anon",
-        "age": 52,
-        "height": 171,
-        "weight": 74
-    },
-    {
-        "name": "anonymous",
-        "email": "anon52@mail.com",
-        "password": "anon",
-        "age": 49,
-        "height": 173,
-        "weight": 79
-    },
-    {
-        "name": "anonymous",
-        "email": "anon58@mail.com",
-        "password": "anon",
-        "age": 49,
-        "height": 163,
-        "weight": 103
-    },
-    {
-        "name": "anonymous",
-        "email": "anon78@mail.com",
-        "password": "anon",
-        "age": 45,
-        "height": 174,
-        "weight": 79
-    },
-    {
-        "name": "anonymous",
-        "email": "anon79@mail.com",
-        "password": "anon",
-        "age": 45,
-        "height": 173,
-        "weight": 74
-    },
-    {
-        "name": "anonymous",
-        "email": "anon81@mail.com",
-        "password": "anon",
-        "age": 45,
-        "height": 168,
-        "weight": 140
-    },
-    {
-        "name": "anonymous",
-        "email": "anon84@mail.com",
-        "password": "anon",
-        "age": 45,
-        "height": 178,
-        "weight": 91
-    },
-    {
-        "name": "anonymous",
-        "email": "anon89@mail.com",
-        "password": "anon",
-        "age": 44,
-        "height": 182,
-        "weight": 66
-    },
-    {
-        "name": "anonymous",
-        "email": "anon103@mail.com",
-        "password": "anon",
-        "age": 42,
-        "height": 178,
-        "weight": 62
-    },
-    {
-        "name": "anonymous",
-        "email": "anon106@mail.com",
-        "password": "anon",
-        "age": 42,
-        "height": 175,
-        "weight": 112
-    },
-    {
-        "name": "anonymous",
-        "email": "anon109@mail.com",
-        "password": "anon",
-        "age": 41,
-        "height": 175,
-        "weight": 83
-    },
-    {
-        "name": "anonymous",
-        "email": "anon112@mail.com",
-        "password": "anon",
-        "age": 41,
-        "height": 173,
-        "weight": 110
-    },
-    {
-        "name": "anonymous",
-        "email": "anon115@mail.com",
-        "password": "anon",
-        "age": 40,
-        "height": 175,
-        "weight": 83
-    },
-    {
-        "name": "anonymous",
-        "email": "anon123@mail.com",
-        "password": "anon",
-        "age": 39,
-        "height": 175,
-        "weight": 81
     },
     {
         "name": "anonymous",
@@ -193,22 +41,6 @@
     },
     {
         "name": "anonymous",
-        "email": "anon138@mail.com",
-        "password": "anon",
-        "age": 37,
-        "height": 174,
-        "weight": 77
-    },
-    {
-        "name": "anonymous",
-        "email": "anon139@mail.com",
-        "password": "anon",
-        "age": 37,
-        "height": 173,
-        "weight": 74
-    },
-    {
-        "name": "anonymous",
         "email": "anon145@mail.com",
         "password": "anon",
         "age": 37,
@@ -241,27 +73,11 @@
     },
     {
         "name": "anonymous",
-        "email": "anon159@mail.com",
-        "password": "anon",
-        "age": 35,
-        "height": 173,
-        "weight": 80
-    },
-    {
-        "name": "anonymous",
         "email": "anon164@mail.com",
         "password": "anon",
         "age": 35,
         "height": 165,
         "weight": 65
-    },
-    {
-        "name": "anonymous",
-        "email": "anon166@mail.com",
-        "password": "anon",
-        "age": 35,
-        "height": 170,
-        "weight": 99
     },
     {
         "name": "anonymous",
@@ -278,14 +94,6 @@
         "age": 33,
         "height": 160,
         "weight": 44
-    },
-    {
-        "name": "anonymous",
-        "email": "anon187@mail.com",
-        "password": "anon",
-        "age": 33,
-        "height": 169,
-        "weight": 64
     },
     {
         "name": "anonymous",
@@ -326,22 +134,6 @@
         "age": 32,
         "height": 177,
         "weight": 116
-    },
-    {
-        "name": "anonymous",
-        "email": "anon212@mail.com",
-        "password": "anon",
-        "age": 31,
-        "height": 173,
-        "weight": 73
-    },
-    {
-        "name": "anonymous",
-        "email": "anon213@mail.com",
-        "password": "anon",
-        "age": 31,
-        "height": 173,
-        "weight": 76
     },
     {
         "name": "anonymous",
@@ -390,30 +182,6 @@
         "age": 30,
         "height": 174,
         "weight": 80
-    },
-    {
-        "name": "anonymous",
-        "email": "anon242@mail.com",
-        "password": "anon",
-        "age": 29,
-        "height": 178,
-        "weight": 72
-    },
-    {
-        "name": "anonymous",
-        "email": "anon253@mail.com",
-        "password": "anon",
-        "age": 29,
-        "height": 185,
-        "weight": 90
-    },
-    {
-        "name": "anonymous",
-        "email": "anon258@mail.com",
-        "password": "anon",
-        "age": 28,
-        "height": 178,
-        "weight": 75
     },
     {
         "name": "anonymous",
@@ -529,94 +297,6 @@
     },
     {
         "name": "anonymous",
-        "email": "anon340@mail.com",
-        "password": "anon",
-        "age": 24,
-        "height": 174,
-        "weight": 58
-    },
-    {
-        "name": "anonymous",
-        "email": "anon342@mail.com",
-        "password": "anon",
-        "age": 24,
-        "height": 176,
-        "weight": 76
-    },
-    {
-        "name": "anonymous",
-        "email": "anon347@mail.com",
-        "password": "anon",
-        "age": 24,
-        "height": 177,
-        "weight": 77
-    },
-    {
-        "name": "anonymous",
-        "email": "anon351@mail.com",
-        "password": "anon",
-        "age": 24,
-        "height": 183,
-        "weight": 129
-    },
-    {
-        "name": "anonymous",
-        "email": "anon353@mail.com",
-        "password": "anon",
-        "age": 23,
-        "height": 175,
-        "weight": 69
-    },
-    {
-        "name": "anonymous",
-        "email": "anon354@mail.com",
-        "password": "anon",
-        "age": 23,
-        "height": 177,
-        "weight": 74
-    },
-    {
-        "name": "anonymous",
-        "email": "anon360@mail.com",
-        "password": "anon",
-        "age": 23,
-        "height": 175,
-        "weight": 74
-    },
-    {
-        "name": "anonymous",
-        "email": "anon365@mail.com",
-        "password": "anon",
-        "age": 23,
-        "height": 175,
-        "weight": 74
-    },
-    {
-        "name": "anonymous",
-        "email": "anon379@mail.com",
-        "password": "anon",
-        "age": 22,
-        "height": 174,
-        "weight": 72
-    },
-    {
-        "name": "anonymous",
-        "email": "anon390@mail.com",
-        "password": "anon",
-        "age": 21,
-        "height": 174,
-        "weight": 72
-    },
-    {
-        "name": "anonymous",
-        "email": "anon393@mail.com",
-        "password": "anon",
-        "age": 21,
-        "height": 173,
-        "weight": 70
-    },
-    {
-        "name": "anonymous",
         "email": "anon396@mail.com",
         "password": "anon",
         "age": 21,
@@ -697,22 +377,6 @@
     },
     {
         "name": "anonymous",
-        "email": "anon434@mail.com",
-        "password": "anon",
-        "age": 19,
-        "height": 176,
-        "weight": 72
-    },
-    {
-        "name": "anonymous",
-        "email": "anon442@mail.com",
-        "password": "anon",
-        "age": 19,
-        "height": 164,
-        "weight": 48
-    },
-    {
-        "name": "anonymous",
         "email": "anon444@mail.com",
         "password": "anon",
         "age": 19,
@@ -734,69 +398,5 @@
         "age": 18,
         "height": 176,
         "weight": 71
-    },
-    {
-        "name": "anonymous",
-        "email": "anon459@mail.com",
-        "password": "anon",
-        "age": 18,
-        "height": 176,
-        "weight": 69
-    },
-    {
-        "name": "anonymous",
-        "email": "anon466@mail.com",
-        "password": "anon",
-        "age": 18,
-        "height": 162,
-        "weight": 46
-    },
-    {
-        "name": "anonymous",
-        "email": "anon468@mail.com",
-        "password": "anon",
-        "age": 18,
-        "height": 171,
-        "weight": 65
-    },
-    {
-        "name": "anonymous",
-        "email": "anon472@mail.com",
-        "password": "anon",
-        "age": 18,
-        "height": 169,
-        "weight": 64
-    },
-    {
-        "name": "anonymous",
-        "email": "anon474@mail.com",
-        "password": "anon",
-        "age": 18,
-        "height": 162,
-        "weight": 44
-    },
-    {
-        "name": "anonymous",
-        "email": "anon476@mail.com",
-        "password": "anon",
-        "age": 18,
-        "height": 170,
-        "weight": 73
-    },
-    {
-        "name": "anonymous",
-        "email": "anon480@mail.com",
-        "password": "anon",
-        "age": 17,
-        "height": 175,
-        "weight": 140
-    },
-    {
-        "name": "anonymous",
-        "email": "anon485@mail.com",
-        "password": "anon",
-        "age": 17,
-        "height": 167,
-        "weight": 59
     }
 ]
