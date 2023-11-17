@@ -214,13 +214,13 @@ describe("CRUD Testing", () => {
 
     // WARNING: turn this test off if possible. It eats up my API quota.
     // YOU HAVE BEEN WARNED.
-    // it("search query", async () => {
-    //     const response = await request(app)
-    //         .get("/recipes/api-search?search=egg")
-    //         .set("authorization", `Bearer ${token}`);
-    //     expect(response.status).toBe(200);
-    //     expect(response.body).toBeInstanceOf(Object);
-    // });
+    it("search query", async () => {
+        const response = await request(app)
+            .get("/recipes/api-search?search=egg")
+            .set("authorization", `Bearer ${token}`);
+        expect(response.status).toBe(200);
+        expect(response.body).toBeInstanceOf(Object);
+    });
 });
 
 describe("helpers testing", () => {
