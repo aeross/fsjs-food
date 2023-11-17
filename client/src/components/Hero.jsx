@@ -24,7 +24,7 @@ export default function Hero({ recipe }) {
             </ul>
         </div>
 
-        <div className="flex-col lg:flex-row col-span-3 pr-16">
+        <div className="flex-col lg:flex-row col-span-3 pl-10 pr-16 border-l-2">
             <div>
                 <img src={recipe.imageUrl} className="max-w-sm rounded-lg shadow-2xl my-4" />
                 <h1 className="text-3xl font-bold my-4">{recipe.name}</h1>
