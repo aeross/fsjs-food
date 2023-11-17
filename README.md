@@ -413,4 +413,4 @@ In the server side, in `__test__/server.test.js`, there is a commented section o
 // });
 ```
 
-Uncomment that section in order to achieve 80% test coverage.
+Uncomment that section in order to achieve 80% test coverage. **Make sure to comment it back after you've ran the test.**
